@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <Page id="intentListPage" showNavButton="true" navButtonTooltip="{i18n>BACK}"
+    navButtonPress="onNavBack" title="{i18n>INTENTS}" floatingFooter="true">
+    <content>
+      <SearchField liveChange="onIntentSearch"></SearchField>
+      <List id="intentList" items="{path:'/intents', sorter:{path:'intent_name'}}"
+        mode="SingleSelectMaster" rememberSelections="false" selectionChange="onIntentPress">
+        <StandardListItem type="Active" title="{intent_name}" description="{description}">
+        </StandardListItem>
+      </List>
+    </content>
+    <footer>
+      <Bar>
+        <contentRight>
+          <Button type="Emphasized" tooltip="{i18n>CREATE}" icon="sap-icon://add"
+            press="onCreateIntent"></Button>
+        </contentRight>
+      </Bar>
+    </footer>
+  </Page>
+</core:FragmentDefinition>

@@ -1,0 +1,35 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core">
+  <Table mode="delete" items="{path:'/intentDetails/cross_intents'}"
+    busy="{view>/busyAccountTable}" class="sapUiSizeCompact">
+    <headerToolbar>
+      <Toolbar>
+        <content>
+          <ToolbarSpacer/>
+          <Button enabled="{view>/editMode}" text="{i18n>ADD}" press="onAddCrossIntent"></Button>
+        </content>
+      </Toolbar>
+    </headerToolbar>
+    <columns>
+      <Column>
+        <Text text="{i18n>INTENTS}"/>
+      </Column>
+      <Column hAlign="Right" vAlign="Middle" width="1.5em">
+        <Text text=""/>
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <Select forceSelection="false" enabled="{view>/editMode}" items="{intentModel>/intents}"
+          selectedKey="{intent_id}">
+          <core:Item key="{intentModel>intent_name}" text="{intentModel>intent_name}"/>
+        </Select>
+        <Button icon="sap-icon://sys-cancel" enabled="{view>/editMode}" tooltip="Delete"
+          type="Transparent" class="redButton" press="onDeleteCrossIntent"></Button>
+      </ColumnListItem>
+    </items>
+  </Table>
+</core:FragmentDefinition>

@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+  <Table mode="delete" items="{path:'/intentDetails/entities'}" busy="{view>/busyAccountTable}"
+    class="sapUiSizeCompact">
+    <headerToolbar>
+      <Toolbar>
+        <content>
+          <ToolbarSpacer/>
+          <Button enabled="{view>/editMode}" text="{i18n>ADD}" press="onAddEntity"></Button>
+        </content>
+      </Toolbar>
+    </headerToolbar>
+    <columns>
+      <Column width="30%">
+        <Text text="{i18n>NAME}"/>
+      </Column>
+      <Column>
+        <Text text="{i18n>DESCRIPTION}"/>
+      </Column>
+      <Column width="12%">
+        <Text text="{i18n>REQUIRED}"/>
+      </Column>
+      <Column hAlign="Right" vAlign="Middle" width="1.5em">
+        <Text text=""/>
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <HBox>
+          <Text text="{name}" visible="{= !${view>/editMode}}"></Text>
+          <Input value="{name}" visible="{view>/editMode}"></Input>
+        </HBox>
+        <HBox>
+          <Text text="{description}" visible="{= !${view>/editMode}}"></Text>
+          <Input value="{description}" visible="{view>/editMode}"></Input>
+        </HBox>
+        <Switch enabled="{view>/editMode}" state="{is_required}" class="sapUiSizeCompact"></Switch>
+        <Button icon="sap-icon://sys-cancel" enabled="{view>/editMode}" tooltip="Delete" type="Transparent"
+          class="redButton" press="onDeleteEntitiy"></Button>
+      </ColumnListItem>
+    </items>
+  </Table>
+</core:FragmentDefinition>

@@ -1,0 +1,103 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.uxap" xmlns:layout="sap.ui.layout" xmlns:m="sap.m">
+  <ObjectPageLayout id="intentDetailsObjectPage" class="sapUiSizeCompact"
+    selectedSection="{view>/selectedSection}" visible="{view>/showDetails}">
+    <headerTitle>
+      <ObjectPageHeader objectTitle="{/applicationDetails/name}"
+        objectSubtitle="{/applicationDetails/description}">
+        <actions>
+          <ObjectPageHeaderActionButton visible="{= !${view>/editMode}}" text="Edit" class="sapUiSizeCompact"
+            hideText="false" type="Emphasized" press="onEdit"/>
+          <ObjectPageHeaderActionButton visible="{view>/editMode}" text="Save" class="sapUiSizeCompact"
+            hideText="false" type="Emphasized" press="onSave"/>
+          <ObjectPageHeaderActionButton visible="{view>/editMode}" text="Cancel" class="sapUiSizeCompact"
+            hideText="false" press="onCancel"/>
+          <ObjectPageHeaderActionButton tooltip="{i18n>CLIENT_DETAILS}" class="sapUiSizeCompact"
+            icon="sap-icon://settings" hideText="true" press="onShowClientDetails"/>
+        </actions>
+      </ObjectPageHeader>
+    </headerTitle>
+    <headerContent>
+      <m:VBox>
+        <m:ObjectIdentifier title="{/intentDetails/intent_name}" text="{/intentDetails/description}"/>
+        <m:HBox>
+          <m:Text text="Conversation" class="sapUiSmallMarginTop sapUiSmallMarginEnd"></m:Text>
+          <m:Switch enabled="{view>/editMode}" customTextOn="Yes" customTextOff="No"
+            state="{/intentDetails/is_conversation}" class="sapUiSizeCompact marginTop"></m:Switch>
+        </m:HBox>
+      </m:VBox>
+    </headerContent>
+    <sections>
+      <ObjectPageSection id="entity" title="Entities">
+        <subSections>
+          <ObjectPageSubSection title="">
+            <blocks>
+              <core:Fragment fragmentName="sedaconf.view.ApplicationDetails.fragments.IntentDetailsEntities"
+                type="XML"/>
+            </blocks>
+          </ObjectPageSubSection>
+        </subSections>
+      </ObjectPageSection>
+      <ObjectPageSection visible="{= !${/intentDetails/is_conversation}}" title="Responses">
+        <subSections>
+          <ObjectPageSubSection title="">
+            <blocks>
+              <core:Fragment fragmentName="sedaconf.view.ApplicationDetails.fragments.IntentDetailsResponses"
+                type="XML"/>
+            </blocks>
+          </ObjectPageSubSection>
+        </subSections>
+      </ObjectPageSection>
+      <ObjectPageSection visible="{= !${/intentDetails/is_conversation}}" title="Action">
+        <subSections>
+          <ObjectPageSubSection title="">
+            <blocks>
+              <core:Fragment fragmentName="sedaconf.view.ApplicationDetails.fragments.IntentDetailsAction"
+                type="XML"/>
+            </blocks>
+          </ObjectPageSubSection>
+        </subSections>
+      </ObjectPageSection>
+      <ObjectPageSection visible="{= ${/intentDetails/is_conversation}}" title="Conversations">
+        <subSections>
+          <ObjectPageSubSection title="">
+            <blocks>
+              <core:Fragment
+                fragmentName="sedaconf.view.ApplicationDetails.fragments.IntentDetailsConversationSteps"
+                type="XML"/>
+            </blocks>
+          </ObjectPageSubSection>
+        </subSections>
+      </ObjectPageSection>
+      <ObjectPageSection visible="{= ${/intentDetails/is_conversation}}" title="Cross Intents">
+        <subSections>
+          <ObjectPageSubSection title="">
+            <blocks>
+              <core:Fragment fragmentName="sedaconf.view.ApplicationDetails.fragments.IntentDetailsCrossIntents"
+                type="XML"/>
+            </blocks>
+          </ObjectPageSubSection>
+        </subSections>
+      </ObjectPageSection>
+      <ObjectPageSection title="Fallback Text">
+        <subSections>
+          <ObjectPageSubSection title="">
+            <blocks>
+              <core:Fragment fragmentName="sedaconf.view.ApplicationDetails.fragments.IntentDetailsFallbackText"
+                type="XML"/>
+            </blocks>
+          </ObjectPageSubSection>
+        </subSections>
+      </ObjectPageSection>
+      <ObjectPageSection title="Follow-Up Actions">
+        <subSections>
+          <ObjectPageSubSection title="">
+            <blocks>
+              <core:Fragment fragmentName="sedaconf.view.ApplicationDetails.fragments.IntentDetailsFollowUpActions"
+                type="XML"/>
+            </blocks>
+          </ObjectPageSubSection>
+        </subSections>
+      </ObjectPageSection>
+    </sections>
+  </ObjectPageLayout>
+</core:FragmentDefinition>

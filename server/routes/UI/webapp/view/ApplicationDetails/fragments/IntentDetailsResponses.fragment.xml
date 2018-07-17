@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+  <Table items="{/intentDetails/responses}" class="sapUiSizeCompact">
+    <headerToolbar>
+      <Toolbar>
+        <content>
+          <ToolbarSpacer/>
+          <Button enabled="{view>/editMode}" text="{i18n>ADD}" press="onAddResponse"></Button>
+        </content>
+      </Toolbar>
+    </headerToolbar>
+    <columns>
+      <Column>
+        <Text text="{i18n>RESPONSE}"/>
+      </Column>
+      <Column hAlign="Right" vAlign="Middle" width="1.5em">
+        <Text text=""/>
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <TextArea value="{text}" growing="true" growingMaxLines="3" editable="{view>/editMode}"
+          width="100%"></TextArea>
+        <Button icon="sap-icon://sys-cancel" enabled="{view>/editMode}" tooltip="Delete"
+          type="Transparent" class="redButton" press="onDeleteResponse"></Button>
+      </ColumnListItem>
+    </items>
+  </Table>
+</core:FragmentDefinition>

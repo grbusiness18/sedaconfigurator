@@ -1,0 +1,21 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:uxap="sap.uxap" xmlns="sap.m"
+	controllerName="sedaconf.controller.Applications.Applications" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>APPLICATIONS}" showHeader="false">
+		<content>
+			<uxap:ObjectPageHeader objectTitle="{i18n>APPLICATIONS}">
+				<uxap:actions>
+					<uxap:ObjectPageHeaderActionButton text="Create" class="sapUiSizeCompact sapUiTinyMarginTop" hideText="false" type="Emphasized"
+						press="onCreate"/>
+					<uxap:ObjectPageHeaderActionButton visible="{= !${view>/editMode}}" icon="sap-icon://edit" tooltip="Edit" class="sapUiSizeCompact sapUiTinyMarginTop" hideText="true"
+						press="onEdit"/>
+					<uxap:ObjectPageHeaderActionButton visible="{view>/editMode}" text="Done" class="sapUiSizeCompact sapUiTinyMarginTop" hideText="false"
+						press="onDone"/>
+				</uxap:actions>
+			</uxap:ObjectPageHeader>
+			<HBox items="{/applications}" class="sapUiTinyMargin" wrap="Wrap">
+				<GenericTile header="{name}" scope="{= ${view>/editMode} ? 'Actions' : 'Display'}" subheader="{description}" press="onOpenApplication"
+					class="sapUiTinyMargin" mode="HeaderMode"></GenericTile>
+			</HBox>
+		</content>
+	</Page>
+</mvc:View>

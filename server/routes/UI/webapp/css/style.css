@@ -1,0 +1,13 @@
+/* Enter your custom styles here */
+
+.marginTop {
+    margin-top: 12px;
+}
+
+.sapMText[data-gray] {
+    color: gray !important;
+}
+
+.redButton span {
+    color: #C13724 !important;
+}

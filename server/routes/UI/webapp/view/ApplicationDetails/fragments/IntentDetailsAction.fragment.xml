@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core">
+  <Table mode="delete" items="{path:'/intentDetails/actions'}" busy="{view>/busyAccountTable}"
+    class="sapUiSizeCompact">
+    <headerToolbar>
+      <Toolbar>
+        <content>
+          <ToolbarSpacer/>
+          <Button enabled="{view>/editMode}" text="{i18n>ADD}" press="onAddAction"></Button>
+        </content>
+      </Toolbar>
+    </headerToolbar>
+    <columns>
+      <Column width="80%">
+        <Text text="{i18n>URL}"/>
+      </Column>
+      <Column>
+        <Text text="{i18n>METHOD}"/>
+      </Column>
+      <Column hAlign="Right" vAlign="Middle" width="1.5em">
+        <Text text=""/>
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <TextArea value="{path}" growing="true" growingMaxLines="5" editable="{view>/editMode}"
+          width="100%"></TextArea>
+        <Select forceSelection="false" enabled="{view>/editMode}" selectedKey="{method}">
+          <core:Item key="GET" text="GET"/>
+          <core:Item key="POST" text="POST"/>
+          <core:Item key="PUT" text="PUT"/>
+          <core:Item key="DELETE" text="DELETE"/>
+        </Select>
+        <Button icon="sap-icon://sys-cancel" enabled="{view>/editMode}" tooltip="Delete" type="Transparent"
+          class="redButton" press="onDeleteAction"></Button>
+      </ColumnListItem>
+    </items>
+  </Table>
+</core:FragmentDefinition>

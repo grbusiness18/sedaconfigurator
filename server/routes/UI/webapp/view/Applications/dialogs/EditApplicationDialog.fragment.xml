@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>EDIT_APPLICATION}" class="sapUiPopupWithPadding">
+		<content>
+			<VBox>
+				<Label text="{i18n>APPLICATION_NAME}" required="true"/>
+				<Input liveChange="onNameChange" value="{dialogModel>/name}" valueState="{dialogModel>/vsName}" valueStateText="{dialogModel>/vstName}"></Input>
+				<Label text="{i18n>APPLICATION_DESCRIPTION}" required="true" class="sapUiTinyMarginTop"/>
+				<TextArea liveChange="onDescriptionChange" value="{dialogModel>/description}" rows="3" valueState="{dialogModel>/vsDescription}"
+					valueStateText="{dialogModel>/vstDescription}" width="100%"></TextArea>
+				<Label text="{i18n>RECAST_TOKEN}" required="true" class="sapUiTinyMarginTop"/>
+				<Input liveChange="onTokenChange" value="{dialogModel>/recastToken}" valueState="{dialogModel>/vsRecastToken}"
+					valueStateText="{dialogModel>/vstRecastToken}"></Input>
+				<Label text="{i18n>RECAST_THRESHOLD}" required="true" class="sapUiTinyMarginTop"/>
+				<Input liveChange="onThresholdChange" value="{dialogModel>/recastThreshold}" valueState="{dialogModel>/vsRecastThreshold}"
+					valueStateText="{dialogModel>/vstRecastThreshold}"></Input>
+			</VBox>
+		</content>
+		<beginButton>
+			<Button text="{i18n>UPDATE}" type="Emphasized" press="onUpdate"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>CANCEL}" press="close"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

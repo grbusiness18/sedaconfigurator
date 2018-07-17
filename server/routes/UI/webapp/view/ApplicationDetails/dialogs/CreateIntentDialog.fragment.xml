@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>CREATE_INTENT}" class="sapUiPopupWithPadding">
+		<content>
+			<VBox>
+				<Label text="{i18n>APPLICATION_NAME}" required="true"/>
+				<Input liveChange="onNameChange" value="{dialogModel>/name}" valueState="{dialogModel>/vsName}" valueStateText="{dialogModel>/vstName}"></Input>
+				<Label text="{i18n>APPLICATION_DESCRIPTION}" required="true" class="sapUiSmallMarginTop"/>
+				<TextArea liveChange="onDescriptionChange" value="{dialogModel>/description}" rows="3" valueState="{dialogModel>/vsDescription}"
+					valueStateText="{dialogModel>/vstDescription}" width="100%"></TextArea>
+			</VBox>
+		</content>
+		<beginButton>
+			<Button text="{i18n>CREATE}" type="Emphasized" press="onCreate"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>CANCEL}" press="close"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

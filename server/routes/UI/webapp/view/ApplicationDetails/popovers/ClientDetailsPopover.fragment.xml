@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Popover showHeader="false" class="sapUiContentPadding" placement="Bottom">
+		<VBox wrap="Wrap" width="22rem">
+			<Title text="Client ID" level="H6"></Title>
+			<Text text="{/applicationDetails/credentials/clientid}" class="sapUiSmallMarginBottom">
+				<customData>
+					<core:CustomData key="gray" value="gray" writeToDom="true"/>
+				</customData>
+			</Text>
+			<Title text="Client Secret" level="H6"></Title>
+			<Text text="{/applicationDetails/credentials/clientsecret}">
+				<customData>
+					<core:CustomData key="gray" value="gray" writeToDom="true"/>
+				</customData>
+			</Text>
+		</VBox>
+	</Popover>
+</core:FragmentDefinition>

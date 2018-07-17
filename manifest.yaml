@@ -1,0 +1,10 @@
+---
+applications:
+- name: commconfig
+  buildpack: nodejs_buildpack
+  memory: 512M
+  disk_quota: 512M
+  host: comconfig
+  path: ""
+  services:
+  - mdb

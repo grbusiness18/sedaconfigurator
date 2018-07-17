@@ -1,0 +1,141 @@
+{
+  "_version": "1.7.0",
+  "sap.app": {
+    "id": "sedaconf",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "ach": "ach",
+    "sourceTemplate": {
+      "id": "ui5template.basicSAPUI5ApplicationProject",
+      "version": "1.40.12"
+    }
+  },
+
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_hcb",
+      "sap_belize"
+
+    ]
+  },
+
+  "sap.ui5": {
+    "config": {
+      "fullWidth": true,
+      "appWidthLimited": false,
+      "sapFiori2Adaptation": true
+    },
+    "rootView": {
+      "viewName": "sedaconf.view.App",
+      "type": "XML"
+    },
+    "dependencies": {
+      "minUI5Version": "1.30.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {},
+        "sap.ushell": {},
+        "sap.collaboration": {},
+        "sap.ui.comp": {},
+        "sap.uxap": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sedaconf.i18n.i18n"
+        }
+      },
+      "global": {
+        "type": "sap.ui.model.json.JSONModel",
+        "preload": true
+      }
+    },
+    "resources": {
+      "css": [{
+        "uri": "css/style.css"
+      }]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlId": "sedaconfRootAppId",
+        "viewPath": "sedaconf.view",
+        "bypassed": {
+          "target": "_404"
+        }
+      },
+      "routes": [{
+        "name": "Applications",
+        "pattern": "",
+        "titleTarget": "",
+        "greedy": false,
+        "target": ["Applications"]
+      }, {
+        "name": "ApplicationDetails",
+        "pattern": "Application/{applicationId}",
+        "titleTarget": "",
+        "greedy": false,
+        "target": ["ApplicationDetails"]
+      }, {
+        "name": "ApplicationLogs",
+        "pattern": "Application/{applicationId}/Logs",
+        "titleTarget": "",
+        "greedy": false,
+        "target": ["ApplicationLogs"]
+      }],
+      "targets": {
+        "Applications": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearAggregation": true,
+          "viewName": "Applications/Applications",
+          "controlAggregation": "pages",
+          "controlId": "sedaconfRootAppId"
+        },
+        "ApplicationDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearAggregation": true,
+          "viewName": "ApplicationDetails/ApplicationDetails",
+          "controlAggregation": "pages",
+          "controlId": "sedaconfRootAppId"
+        },
+        "ApplicationLogs": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearAggregation": true,
+          "viewName": "ApplicationLogs/ApplicationLogs",
+          "controlAggregation": "pages",
+          "controlId": "sedaconfRootAppId"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sedaconf.controller.ApplicationLogs.ApplicationLogs"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showNavButton="true" navButtonTooltip="{i18n>BACK}" navButtonPress="onNavBack" title="{i18n>LOGS}">
+		<content>
+			<Table id="logsTable" items="{/logs}" class="sapUiSizeCompact">
+				<headerToolbar>
+					<Toolbar>
+						<content>
+							<Title text="{i18n>LOGS} ({/logs/length})"></Title>
+							<ToolbarSpacer/>
+							<SearchField liveChange="onLogsSearch" width="30%"></SearchField>
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>INPUT}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>OUTPUT}"/>
+					</Column>
+					<Column width="10rem">
+						<Text text="{i18n>LOG_TYPE}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>TIMESTAMP}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<Text text="{input}"></Text>
+						<Text text="{output}"></Text>
+						<Text text="{logtype}"></Text>
+						<Text text="{timestamp}"></Text>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

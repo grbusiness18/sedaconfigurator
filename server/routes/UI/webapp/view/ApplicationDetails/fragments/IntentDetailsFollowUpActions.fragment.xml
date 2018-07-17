@@ -1,0 +1,56 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+  <Table mode="delete" class="sapUiSizeCompact">
+    <headerToolbar>
+      <Toolbar>
+        <content>
+          <ToolbarSpacer/>
+          <Button enabled="{view>/editMode}" text="{i18n>ADD}" press="onAddConversationSteps"></Button>
+        </content>
+      </Toolbar>
+    </headerToolbar>
+    <columns>
+      <Column>
+        <Text text="{i18n>ENTITY_NAME}"/>
+      </Column>
+      <Column>
+        <Text text="{i18n>TYPE}"/>
+      </Column>
+      <Column>
+        <Text text="{i18n>TITLE}"/>
+      </Column>
+      <Column>
+        <Text text="{i18n>VALUE}"/>
+      </Column>
+      <Column>
+        <Text text="{i18n>ON_CONDITION}"/>
+      </Column>
+      <Column hAlign="Right" vAlign="Middle" width="4em">
+        <Text text="Actions"/>
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <Select enabled="{view>/editMode}" width="100%" forceSelection="false" items="{entityModel>/}" change="onBelongsToEntityChange">
+          <core:Item key="{entityModel>name}" text="{entityModel>name}"/>
+        </Select>
+        <Select enabled="{view>/editMode}" selectedKey="Link" width="100%" forceSelection="false" change="onBelongsToEntityChange">
+          <core:Item key="Link" text="Link"/>
+          <core:Item key="Conversation" text="Conversation"/>
+          <core:Item key="Command" text="Command"/>
+        </Select>
+        <Text text="View In Deal Manager"></Text>
+        <Text text="dealmanager://opportunity?id=$oppId$"></Text>
+        <Select enabled="{view>/editMode}" width="100%" selectedKey="notempty" forceSelection="false" change="onBelongsToEntityChange">
+          <core:Item key="empty" text="When Empty"/>
+          <core:Item key="notempty" text="When Not Empty"/>
+        </Select>
+        <HBox>
+          <Button icon="sap-icon://edit" enabled="{view>/editMode}" tooltip="Edit" type="Transparent"
+            press="onEditConversationStep"></Button>
+          <Button icon="sap-icon://sys-cancel" enabled="{view>/editMode}" tooltip="Delete" type="Transparent"
+            class="redButton" press="onDeleteConversationStep"></Button>
+        </HBox>
+      </ColumnListItem>
+    </items>
+  </Table>
+</core:FragmentDefinition>

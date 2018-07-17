@@ -1,0 +1,127 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+  <Dialog title="{= ${viewModel>/isEdit} ? 'Edit' : 'Create'} Conversation Step" class="sapUiPopupWithPadding">
+    <content>
+      <VBox>
+        <Label text="Step Name" required="true"/>
+        <Input liveChange="onStepNameChange" value="{dialogModel>/stepName}" valueState="{dialogModel>/vsStepName}"
+          valueStateText="{dialogModel>/vstStepName}"></Input>
+        <Label text="Step Type" required="true" class="sapUiSmallMarginTop"/>
+        <Select width="100%" forceSelection="false" selectedKey="{dialogModel>/stepType}" change="onStepTypeChange"
+          valueState="{dialogModel>/vsStepType}" valueStateText="{dialogModel>/vstStepType}">
+          <core:Item key="0" text="Action"/>
+          <core:Item key="1" text="Dropdown"/>
+          <core:Item key="2" text="Text"/>
+        </Select>
+        <Label text="Belongs To Entity" required="true" class="sapUiSmallMarginTop"/>
+        <Select width="100%" forceSelection="false" items="{entityModel>/}" change="onBelongsToEntityChange"
+          selectedKey="{dialogModel>/belongsToEntity}" valueState="{dialogModel>/vsBelongsToEntity}"
+          valueStateText="{dialogModel>/vstBelongsToEntity}">
+          <core:Item key="{entityModel>name}" text="{entityModel>name}"/>
+        </Select>
+        <Label text="Ok Parameter" required="true" class="sapUiSmallMarginTop"/>
+        <Input liveChange="onOkParameterChange" value="{dialogModel>/okParameter}"
+          valueState="{dialogModel>/vsOkParameter}" valueStateText="{dialogModel>/vstOkParameter}"></Input>
+        <Label text="Execute On No Value" required="true" class="sapUiSmallMarginTop"/>
+        <Switch state="{dialogModel>/executeOnNullEntity}"></Switch>
+        <Table visible="{= ${dialogModel>/stepType} === '0'}" mode="delete"
+          items="{path:'dialogModel>/actions'}" class="sapUiSizeCompact">
+          <headerToolbar>
+            <Toolbar>
+              <content>
+                <ToolbarSpacer/>
+                <Button text="{i18n>ADD}" press="onAddAction"></Button>
+              </content>
+            </Toolbar>
+          </headerToolbar>
+          <columns>
+            <Column width="80%">
+              <Text text="{i18n>URL}"/>
+            </Column>
+            <Column>
+              <Text text="{i18n>METHOD}"/>
+            </Column>
+            <Column hAlign="Right" vAlign="Middle" width="1.5em">
+              <Text text=""/>
+            </Column>
+          </columns>
+          <items>
+            <ColumnListItem>
+              <TextArea value="{dialogModel>path}" growing="true" growingMaxLines="5"
+                width="100%"></TextArea>
+              <Select forceSelection="false" selectedKey="{dialogModel>method}">
+                <core:Item key="GET" text="GET"/>
+                <core:Item key="POST" text="POST"/>
+                <core:Item key="PUT" text="PUT"/>
+                <core:Item key="DELETE" text="DELETE"/>
+              </Select>
+              <Button icon="sap-icon://sys-cancel" tooltip="Delete" type="Transparent" class="redButton"
+                press="onDeleteAction"></Button>
+            </ColumnListItem>
+          </items>
+        </Table>
+        <Table visible="{= ${dialogModel>/stepType} === '1'}" mode="delete"
+          items="{path:'dialogModel>/dropdowns'}" class="sapUiSizeCompact">
+          <headerToolbar>
+            <Toolbar>
+              <content>
+                <ToolbarSpacer/>
+                <Button text="{i18n>ADD}" press="onAddDropdownValue"></Button>
+              </content>
+            </Toolbar>
+          </headerToolbar>
+          <columns>
+            <Column>
+              <Text text="{i18n>NAME}"/>
+            </Column>
+            <Column>
+              <Text text="{i18n>VALUE}"/>
+            </Column>
+            <Column hAlign="Right" vAlign="Middle" width="1.5em">
+              <Text text=""/>
+            </Column>
+          </columns>
+          <items>
+            <ColumnListItem>
+              <Input value="{dialogModel>name}"></Input>
+              <Input value="{dialogModel>value}"></Input>
+              <Button icon="sap-icon://sys-cancel" tooltip="Delete" type="Transparent" class="redButton"
+                press="onDeleteDropdownValue"></Button>
+            </ColumnListItem>
+          </items>
+        </Table>
+        <Table visible="{= ${dialogModel>/stepType} === '2'}" mode="delete"
+          items="{path:'dialogModel>/texts'}" class="sapUiSizeCompact">
+          <headerToolbar>
+            <Toolbar>
+              <content>
+                <ToolbarSpacer/>
+                <Button text="{i18n>ADD}" press="onAddText"></Button>
+              </content>
+            </Toolbar>
+          </headerToolbar>
+          <columns>
+            <Column>
+              <Text text="{i18n>TEXT}"/>
+            </Column>
+            <Column hAlign="Right" vAlign="Middle" width="1.5em">
+              <Text text=""/>
+            </Column>
+          </columns>
+          <items>
+            <ColumnListItem>
+              <Input value="{dialogModel>text}"></Input>
+              <Button icon="sap-icon://sys-cancel" tooltip="Delete" type="Transparent" class="redButton"
+                press="onDeleteText"></Button>
+            </ColumnListItem>
+          </items>
+        </Table>
+      </VBox>
+    </content>
+    <beginButton>
+      <Button text="{= ${viewModel>/isEdit} ? 'Update' : 'Create'}" type="Emphasized" press="onCreate"/>
+    </beginButton>
+    <endButton>
+      <Button text="{i18n>CANCEL}" press="close"/>
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>
