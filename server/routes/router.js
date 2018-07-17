@@ -22,7 +22,7 @@ oROUTER.get('/', (req, res, next) => {
 
 // General Routes
 oROUTER.post('/oauth/token',Controller.Core)
-oROUTER.post('/parse',  
+oROUTER.post('/parse',
 AppPassport.authenticate('jwt', { session: false }),  Controller.Core)
 
 // App Routes
@@ -62,21 +62,20 @@ oROUTER.delete('/apps/:appid/intents/:intentid/actions/:actionid',    Controller
 oROUTER.delete('/apps/:appid/intents/:intentid/actions/all',          Controller.IntentActions)
 
 
+// Api Intent / followup
+oROUTER.get('/apps/:appid/intents/:intentid/followup/all',             Controller.IntentFollowUp)
+oROUTER.post('/apps/:appid/intents/:intentid/followup/create',         Controller.IntentFollowUp)
+oROUTER.put('/apps/:appid/intents/:intentid/followup/:followupid',     Controller.IntentFollowUp)
+oROUTER.delete('/apps/:appid/intents/:intentid/followup/:followupid',  Controller.IntentFollowUp)
+oROUTER.delete('/apps/:appid/intents/:intentid/followup/all',          Controller.IntentFollowUp)
+
+
 // Api Intent / fallback
 oROUTER.get('/apps/:appid/intents/:intentid/fallback/all',             Controller.IntentFallback)
 oROUTER.post('/apps/:appid/intents/:intentid/fallback/create',         Controller.IntentFallback)
 oROUTER.put('/apps/:appid/intents/:intentid/fallback/:fallbackid',     Controller.IntentFallback)
 oROUTER.delete('/apps/:appid/intents/:intentid/fallback/:fallbackid',  Controller.IntentFallback)
 oROUTER.delete('/apps/:appid/intents/:intentid/fallback/all',          Controller.IntentFallback)
-
-// Api Intent / conversations
-oROUTER.get('/apps/:appid/intents/:intentid/convsteps/all',       Controller.IntentConversation)
-oROUTER.post('/apps/:appid/intents/:intentid/convsteps/create',   Controller.IntentConversation)
-oROUTER.put('/apps/:appid/intents/:intentid/convsteps/:convid',   Controller.IntentConversation)
-oROUTER.delete('/apps/:appid/intents/:intentid/convsteps/:convid',Controller.IntentConversation)
-oROUTER.delete('/apps/:appid/intents/:intentid/convsteps/all',    Controller.IntentConversation)
-
-
 
 // Api Intent / conversations
 oROUTER.get('/apps/:appid/intents/:intentid/convsteps/all',       Controller.IntentConversation)
